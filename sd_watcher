@@ -10,7 +10,7 @@ from time import sleep, time
 
 class SD(object):
     def __init__(self):
-        self.sd = ctypes.CDLL(ctypes.util.find_library("systemd-daemon"))
+        self.sd = ctypes.CDLL(ctypes.util.find_library("systemd"))
 
     def ready(self):
         self.__notify("READY=1")
@@ -31,7 +31,7 @@ class SD(object):
         self.__notify("WATCHDOG=1")
 
     def __notify(self, msg):
-        print msg
+        #print msg
         self.sd.sd_notify(0, msg)
 
 
